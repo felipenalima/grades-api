@@ -16,6 +16,7 @@ import { gradeRouter } from './routes/gradeRouter.js';
     console.log('Conectado');
   } catch (error) {
     console.log('Não foi possível conectar');
+    process.exit();
   }
 })();
 
@@ -31,6 +32,10 @@ app.use(
 );
 
 app.use(gradeRouter);
+
+app.get('/', (req, res) => {
+  res.send('API em execucao');
+});
 
 app.listen(process.env.PORT || 8081, () => {
   console.log('API em execucao');
